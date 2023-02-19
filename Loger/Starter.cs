@@ -4,37 +4,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Loger
+namespace Logger
 {
-    static class Starter
+    public static class Starter
     {
-        private static int _logCount = 100;
+        private static readonly int LogCount = 100;
+
         public static void Run()
         {
-            for (int i = 0; i <= _logCount; i++)
+            Random rand = new Random();
+
+            for (int i = 0; i <= LogCount; i++)
             {
-                int rand = new Random().Next(1, 4);
-                if (rand == 1)
+                if (rand.Next(1, 4) == 1)
                 {
                     Actions.StartMethod();
                     continue;
                 }
-                if (rand == 2)
+
+                if (rand.Next(1, 4) == 2)
                 {
                     Actions.SkippedLogicInMethod();
                     continue;
                 }
-                if (rand == 3)
+
+                if (rand.Next(1, 4) == 3)
                 {
                     Actions.Error();
                     continue;
                 }
             }
+
             Logger.SaveLog();
         }
+
         public static int EndStarter()
         {
-            int logCount = _logCount + 1;
+            int logCount = Starter.LogCount + 1;
             return logCount;
         }
     }

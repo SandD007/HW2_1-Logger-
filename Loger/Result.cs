@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Loger
+namespace Logger
 {
-    static class Result
+    public static class Result
     {
         private const string REASON = "Action failed by а reason: ";
 
@@ -14,13 +14,13 @@ namespace Loger
         {
             if (!status)
             {
-               string Message = REASON + message;
-               return Message;
+               string mes = REASON + message;
+               return mes;
             }
             else
             {
-               string Message = message;
-               return Message;
+               string mes = message;
+               return mes;
             }
         }
     }
