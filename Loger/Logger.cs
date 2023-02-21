@@ -10,27 +10,27 @@ namespace Logger
     public static class Logger
     {
         private static readonly string[] SaveMessage = new string[Starter.EndStarter()];
-        private static int errorCount = 0;
+        private static int ErrorCount = 0;
 
         public static void Error(string message)
         {
             string m = DateTime.Now + " |ERROR| " + message;
             AddLog(m);
-            errorCount++;
+            ErrorCount++;
         }
 
         public static void Info(string message)
         {
             string m = DateTime.Now + " |INFO| " + message;
             AddLog(m);
-            errorCount++;
+            ErrorCount++;
         }
 
         public static void Warning(string message)
         {
             string m = DateTime.Now + " |WARNING| " + message;
             AddLog(m);
-            errorCount++;
+            ErrorCount++;
         }
 
         public static void SaveLog()
@@ -43,7 +43,7 @@ namespace Logger
         {
             string message = m;
             Console.WriteLine(message);
-            SaveMessage[errorCount] = message;
+            SaveMessage[ErrorCount] = message;
         }
     }
 }

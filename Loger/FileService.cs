@@ -13,8 +13,8 @@ namespace Logger
         {
             this.CreateFolder();
             int count = new Random().Next(1, 100);
-            int countFile = Directory.GetFiles("Log").Length;
             string[] fileInfo = Directory.GetFiles("Log");
+            int countFile = fileInfo.Length;
             string fileName = "log" + count + ".txt";
             FileInfo[] fileInFolder = new FileInfo[countFile];
 
@@ -34,7 +34,17 @@ namespace Logger
 
         private void CreateFolder()
         {
-            Directory.CreateDirectory("Log");
+            string directoryName = "Log";
+
+            if (Directory.Exists(directoryName))
+            {
+                Directory.Delete(directoryName, true);
+                Directory.CreateDirectory(directoryName);
+            }
+            else
+            {
+                Directory.CreateDirectory(directoryName);
+            }
         }
     }
 }

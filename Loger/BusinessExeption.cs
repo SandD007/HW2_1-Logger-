@@ -28,7 +28,5 @@ namespace Logger
             : base(info, context) 
         {
         }
-
-        public string MyInfo { get; set; }
     }
 }

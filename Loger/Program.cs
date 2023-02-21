@@ -5,7 +5,6 @@
         public static void Main(string[] args)
         {
             Starter.Run();
-            var a = new FileService();
         }
     }
 }
