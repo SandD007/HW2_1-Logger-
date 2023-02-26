@@ -1,42 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Loger
+namespace Logger
 {
-    static class Logger
+    public static class Logger
     {
-        private static string[] _saveMessage = new string[Starter.EndStarter()];
-        private static int _errorCount = 0;
+        private static readonly string[] SaveMessage = new string[Starter.EndStarter()];
+        private static int ErrorCount = 0;
+
         public static void Error(string message)
         {
             string m = DateTime.Now + " |ERROR| " + message;
             AddLog(m);
-            _errorCount++;
+            ErrorCount++;
         }
+
         public static void Info(string message)
         {
             string m = DateTime.Now + " |INFO| " + message;
             AddLog(m);
-            _errorCount++;
+            ErrorCount++;
         }
+
         public static void Warning(string message)
         {
             string m = DateTime.Now + " |WARNING| " + message;
             AddLog(m);
-            _errorCount++;
+            ErrorCount++;
         }
-        private static void AddLog (string m)
+
+        public static void SaveLog()
+        {
+            var file = new FileService();
+            file.SaveFile(SaveMessage);
+        }
+
+        private static void AddLog(string m)
         {
             string message = m;
             Console.WriteLine(message);
-            _saveMessage[_errorCount] = message;
-        }
-        public static void SaveLog()
-        {
-            File.WriteAllText("log.txt", string.Join("\n", _saveMessage));
+            SaveMessage[ErrorCount] = message;
         }
     }
 }
